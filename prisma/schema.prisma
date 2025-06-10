@@ -1,0 +1,70 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Patient {
+  id        Int       @id @default(autoincrement())
+  firstName String
+  lastName  String
+  birthDate DateTime?
+  phone     String?
+  email     String?
+  notes     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  appointments Appointment[]
+  histories    History[]
+  files        File[]
+}
+
+model Appointment {
+  id        Int               @id @default(autoincrement())
+  patientId Int
+  patient   Patient           @relation(fields: [patientId], references: [id])
+  start     DateTime
+  end       DateTime
+  status    AppointmentStatus @default(SCHEDULED)
+  color     String?
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt @default(now())
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+model History {
+  id          Int      @id @default(autoincrement())
+  patientId   Int
+  patient     Patient  @relation(fields: [patientId], references: [id])
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model Template {
+  id        Int      @id @default(autoincrement())
+  name      String
+  content   String // Markdown or HTML
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model File {
+  id        Int      @id @default(autoincrement())
+  patientId Int
+  patient   Patient  @relation(fields: [patientId], references: [id])
+  name      String
+  path      String
+  type      String
+  createdAt DateTime @default(now())
+}
