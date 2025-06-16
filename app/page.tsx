@@ -16,9 +16,8 @@ export default async function Home() {
       <div>
         <div className="relative h-screen ">
           <Background />
-          <Sidebar />
           {/* Option choice */}
-          <div className="flex justify-center h-screen place-items-center md:flex-row flex-col gap-18 md:gap-36">
+          <div className="flex justify-center h-screen place-items-center lg:flex-row flex-col gap-18 md:gap-36">
             <Card
               title="Patients"
               url="/patients"

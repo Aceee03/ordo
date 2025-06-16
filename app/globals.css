@@ -25,8 +25,12 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer components{
-  .sidebar-item{
-    @apply bg-red-500 rounded-full p-2 hover:rounded-lg hover:duration-200 duration-200 transition-all cursor-pointer ease-linear
+@layer components {
+  .sidebar-item {
+    @apply bg-pink-200 hover:bg-pink-100 rounded-full p-2 hover:duration-200 duration-200 transition-all cursor-pointer;
+  }
+
+  .sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white text-xs font-bold transition-all duration-100 scale-0 origin-left bg-gray-900;
   }
 }

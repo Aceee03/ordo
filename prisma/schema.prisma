@@ -69,3 +69,11 @@ model File {
   type      String
   createdAt DateTime @default(now())
 }
+
+model Settings {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
