@@ -27,6 +27,7 @@ model Appointment {
   id        Int               @id @default(autoincrement())
   patientId Int
   patient   Patient           @relation(fields: [patientId], references: [id])
+  payment   Int 
   start     DateTime
   end       DateTime
   status    AppointmentStatus @default(SCHEDULED)

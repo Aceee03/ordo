@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer components{
+  .sidebar-item{
+    @apply bg-red-500 rounded-full p-2 hover:rounded-lg hover:duration-200 duration-200 transition-all cursor-pointer ease-linear
+  }
+}
